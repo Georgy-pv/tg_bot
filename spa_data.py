@@ -1,7 +1,7 @@
 from telebot import types
 
 BASE_URL = 'https://api.telegram.org/bot1808675918:AAGRq28a2vtiPsUVJLei79D7SK6_xpRhmC8/'
-TOKEN = '1808675918:AAFjtrEOtIOfcSRW2JipNN5eQ2tB2dJtmS8'
+TOKEN = '1808675918:AAF9JmF0_o8HucMT9E5VDN3JNy2k0RG7bwY'
 
 # Данные по ценам
 services = {
@@ -39,7 +39,8 @@ class MyUser(object):
     name = ''
     id = ''
     state = ''
-    sign_name = 'Хей'
+    sign_name = ''
+    
     def __init__(self, id, name):
         self.name = name
         self.id = id
@@ -53,6 +54,13 @@ class MyUser(object):
     
 users_dict = {}
 
+# Клавиатура обратной связи
+feedback_markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+feedback_back = types.KeyboardButton('👈 Назад')
+feedback_call = types.KeyboardButton('☎️ Отправить')
+feedback_markup.add(feedback_back, feedback_call)
+
+
 # Клавиатура экрана записи
 sign_markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
 back = types.KeyboardButton('👈 Назад')
@@ -62,10 +70,11 @@ sign_markup.add(back, call)
 
 # Клавиатура главного экрана
 main_markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
-reg = types.KeyboardButton('✍️ Записаться')
 service1 = types.KeyboardButton('📖 Маникюр/Педикюр')
 service2 = types.KeyboardButton('📖 Массажи традиционные') 
 service3 = types.KeyboardButton('📖 Уходы по лицу Comfort Zone')
 service4 = types.KeyboardButton('📖 Тайский массаж и спа программы')
 service5 = types.KeyboardButton('📖 Уходы по телу Comfort Zone')
+reg = types.KeyboardButton('✍️ Записаться')
 main_markup.add(service1, service2, service3, service4, service5, reg)
+
